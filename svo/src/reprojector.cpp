@@ -54,6 +54,9 @@ void Reprojector::initializeGrid(vk::AbstractCamera* cam)
   random_shuffle(grid_.cell_order.begin(), grid_.cell_order.end()); // maybe we should do it at every iteration!
 }
 
+/**
+ * @brief 清空上一次迭代数据
+ */
 void Reprojector::resetGrid()
 {
   n_matches_ = 0;
@@ -61,18 +64,27 @@ void Reprojector::resetGrid()
   std::for_each(grid_.cells.begin(), grid_.cells.end(), [&](Cell* c){ c->clear(); });
 }
 
+/**
+ * @brief 重新计算和当前帧匹配的特征点
+ * @param frame       当前帧
+ * @param overlap_kfs 之前所有的关键帧
+ */
 void Reprojector::reprojectMap(
     FramePtr frame,
     std::vector< std::pair<FramePtr,std::size_t> >& overlap_kfs)
 {
+  // 清空上一次迭代数据
   resetGrid();
 
   // Identify those Keyframes which share a common field of view.
   SVO_START_TIMER("reproject_kfs");
   list< pair<FramePtr,double> > close_kfs;
+  // 先获取有共视关系的关键帧，存储到close_kfs
+  // 通过关键点来判断，能看见关键帧的一个关键点则认为具有共视关系
   map_.getCloseKeyframes(frame, close_kfs);
 
   // Sort KFs with overlap according to their closeness
+  // 将这些关键帧从近到远进行排序
   close_kfs.sort(boost::bind(&std::pair<FramePtr, double>::second, _1) <
                  boost::bind(&std::pair<FramePtr, double>::second, _2));
 
@@ -80,21 +92,26 @@ void Reprojector::reprojectMap(
   // in which grid cell the points fall.
   size_t n = 0;
   overlap_kfs.reserve(options_.max_n_kfs);
+  // 遍历max_n_kfs个靠前的关键帧
   for(auto it_frame=close_kfs.begin(), ite_frame=close_kfs.end();
       it_frame!=ite_frame && n<options_.max_n_kfs; ++it_frame, ++n)
   {
+    // 获取当前关键帧
     FramePtr ref_frame = it_frame->first;
+    // 压入到overlap_kfs
     overlap_kfs.push_back(pair<FramePtr,size_t>(ref_frame,0));
 
     // Try to reproject each mappoint that the other KF observes
     for(auto it_ftr=ref_frame->fts_.begin(), ite_ftr=ref_frame->fts_.end();
         it_ftr!=ite_ftr; ++it_ftr)
-    {
+    {// 遍历关键帧所有特征点
+
       // check if the feature has a mappoint assigned
+      // 确保特征点非空
       if((*it_ftr)->point == NULL)
         continue;
-
       // make sure we project a point only once
+      // 确保同一个点只投影一次
       if((*it_ftr)->point->last_projected_kf_id_ == frame->id_)
         continue;
       (*it_ftr)->point->last_projected_kf_id_ = frame->id_;

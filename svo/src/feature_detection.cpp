@@ -55,6 +55,13 @@ void AbstractDetector::setGridOccpuancy(const Vector2d& px)
     + static_cast<int>(px[0]/cell_size_)) = true;
 }
 
+/**
+ * @brief 快速检测，初始化参数
+ * @param img_width    图像宽度
+ * @param img_height   图像高度
+ * @param cell_size    cell大小
+ * @param n_pyr_levels 金字塔层数
+ */
 FastDetector::FastDetector(
     const int img_width,
     const int img_height,
@@ -63,18 +70,29 @@ FastDetector::FastDetector(
         AbstractDetector(img_width, img_height, cell_size, n_pyr_levels)
 {}
 
+/**
+ * @brief 特征点检测函数
+ * @param frame                当前帧
+ * @param img_pyr              图像金字塔
+ * @param detection_threshold  阈值
+ * @param fts                  得到的特征点
+ */
 void FastDetector::detect(
     Frame* frame,
     const ImgPyr& img_pyr,
     const double detection_threshold,
     Features& fts)
 {
+  // 构造角点结构体vector,设置最大角点数量 grid_n_cols_*grid_n_rows_
   Corners corners(grid_n_cols_*grid_n_rows_, Corner(0,0,detection_threshold,0,0.0f));
+  // 遍历所有金字塔图像
   for(int L=0; L<n_pyr_levels_; ++L)
   {
-    const int scale = (1<<L);
-    vector<fast::fast_xy> fast_corners;
+    // 计算当前金字塔层级的图像缩放系数
+    const int scale = (1<<L);// scale = 2^{L}
+    vector<fast::fast_xy> fast_corners;//存储角点vector
 #if __SSE2__
+    // 调用FAST库函数，进行角点检测
       fast::fast_corner_detect_10_sse2(
           (fast::fast_byte*) img_pyr[L].data, img_pyr[L].cols,
           img_pyr[L].rows, img_pyr[L].cols, 20, fast_corners);
@@ -87,6 +105,7 @@ void FastDetector::detect(
           (fast::fast_byte*) img_pyr[L].data, img_pyr[L].cols,
           img_pyr[L].rows, img_pyr[L].cols, 20, fast_corners);
 #endif
+
     vector<int> scores, nm_corners;
     fast::fast_corner_score_10((fast::fast_byte*) img_pyr[L].data, img_pyr[L].cols, fast_corners, 20, scores);
     fast::fast_nonmax_3x3(fast_corners, scores, nm_corners);
@@ -105,9 +124,16 @@ void FastDetector::detect(
   }
 
   // Create feature for every corner that has high enough corner score
-  std::for_each(corners.begin(), corners.end(), [&](Corner& c) {
+  // 对于有足够高的得分的角点构造成特征点
+  std::for_each(corners.begin(), corners.end(), [&](Corner& c)
+  {// 遍历所有的角点
+    // 要求得分大于阈值
     if(c.score > detection_threshold)
-      fts.push_back(new Feature(frame, Vector2d(c.x, c.y), c.level));
+    {
+        // 构造特征点
+        // 1、所属帧 2、特征点位置 3、金字塔层数
+        fts.push_back(new Feature(frame, Vector2d(c.x, c.y), c.level));
+    }
   });
 
   resetGrid();

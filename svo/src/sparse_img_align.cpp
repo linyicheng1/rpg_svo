@@ -26,6 +26,16 @@
 
 namespace svo {
 
+/**
+ * @brief 图像直接对齐类，构造函数
+ *        初始化了部分参数
+ * @param max_level  最高层
+ * @param min_level  最底层
+ * @param n_iter     最大迭代次数
+ * @param method     方法
+ * @param display    是否显示
+ * @param verbose    是否输出详细调试信息
+ */
 SparseImgAlign::SparseImgAlign(
     int max_level, int min_level, int n_iter,
     Method method, bool display, bool verbose) :
@@ -40,37 +50,45 @@ SparseImgAlign::SparseImgAlign(
   eps_ = 0.000001;
 }
 
+/**
+ * @brief 最小化光度误差，直接计算相对位姿
+ * @param ref_frame 参考帧
+ * @param cur_frame 当前帧
+ * @return 跟踪到的点的数量
+ */
 size_t SparseImgAlign::run(FramePtr ref_frame, FramePtr cur_frame)
 {
+  // 清空所有数据
   reset();
-
+  // 判断数据是否为空
   if(ref_frame->fts_.empty())
   {
     SVO_WARN_STREAM("SparseImgAlign: no features to track!");
     return 0;
   }
-
+  // 记录当前帧和参考帧
   ref_frame_ = ref_frame;
   cur_frame_ = cur_frame;
+
+  // 开辟一些内存
   ref_patch_cache_ = cv::Mat(ref_frame_->fts_.size(), patch_area_, CV_32F);
   jacobian_cache_.resize(Eigen::NoChange, ref_patch_cache_.rows*patch_area_);
   visible_fts_.resize(ref_patch_cache_.rows, false); // TODO: should it be reset at each level?
-
+  // 赋予坐标变换初始值
   SE3 T_cur_from_ref(cur_frame_->T_f_w_ * ref_frame_->T_f_w_.inverse());
 
   for(level_=max_level_; level_>=min_level_; --level_)
-  {
+  {// 从高层往底层遍历
     mu_ = 0.1;
     jacobian_cache_.setZero();
     have_ref_patch_cache_ = false;
     if(verbose_)
       printf("\nPYRAMID LEVEL %i\n---------------\n", level_);
+    // 在不同金字塔层下逐步进行优化
     optimize(T_cur_from_ref);
   }
+  // 计算当前帧在世界坐标系下的位置
   cur_frame_->T_f_w_ = T_cur_from_ref * ref_frame_->T_f_w_;
-
-
-
   return n_meas_/patch_area_;
 }
 

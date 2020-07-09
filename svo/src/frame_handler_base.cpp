@@ -84,27 +84,43 @@ FrameHandlerBase::~FrameHandlerBase()
 #endif
 }
 
+/**
+ * @brief 处理一帧信息前的准备
+ * @param timestamp 当前帧的时间戳
+ * @return
+ *  @arg true：处理当前帧
+ *  @arg false：不处理
+ */
 bool FrameHandlerBase::startFrameProcessingCommon(const double timestamp)
 {
   if(set_start_)
-  {
+  {// 第一帧时为1
+    // 重置算法中所有数据
     resetAll();
+    // 设置当前状态为第一帧
     stage_ = STAGE_FIRST_FRAME;
   }
-
+  // 当前状态为暂停，返回false，不处理信息
   if(stage_ == STAGE_PAUSED)
     return false;
-
+  // 开始计时
   SVO_LOG(timestamp);
   SVO_DEBUG_STREAM("New Frame");
   SVO_START_TIMER("tot_time");
   timer_.start();
-
+  // 清空上一次迭代的信息
   // some cleanup from last iteration, can't do before because of visualization
   map_.emptyTrash();
   return true;
 }
 
+/**
+ * @brief 结束一帧的操作，在一帧处理的最后调用
+ * @param update_id         当前帧id
+ * @param dropout           帧处理的结果
+ * @param num_observations  当前帧特征点的数量
+ * @return none
+ */
 int FrameHandlerBase::finishFrameProcessingCommon(
     const size_t update_id,
     const UpdateResult dropout,
@@ -114,12 +130,13 @@ int FrameHandlerBase::finishFrameProcessingCommon(
   SVO_LOG(dropout);
 
   // save processing time to calculate fps
+  // 计算处理的时间并保存，从而计算帧率
   acc_frame_timings_.push_back(timer_.stop());
   if(stage_ == STAGE_DEFAULT_FRAME)
     acc_num_obs_.push_back(num_observations);
   num_obs_last_ = num_observations;
   SVO_STOP_TIMER("tot_time");
-
+  //
 #ifdef SVO_TRACE
   g_permon->writeToFile();
   {
@@ -128,7 +145,7 @@ int FrameHandlerBase::finishFrameProcessingCommon(
     SVO_LOG(n_candidates);
   }
 #endif
-
+  // 如果在重定位模式下，定位失败则还是重定位模式
   if(dropout == RESULT_FAILURE &&
       (stage_ == STAGE_DEFAULT_FRAME || stage_ == STAGE_RELOCALIZING ))
   {
@@ -136,13 +153,16 @@ int FrameHandlerBase::finishFrameProcessingCommon(
     tracking_quality_ = TRACKING_INSUFFICIENT;
   }
   else if (dropout == RESULT_FAILURE)
-    resetAll();
+    resetAll();// 普通情况下则直接重新开始整个算法
   if(set_reset_)
     resetAll();
 
   return 0;
 }
 
+/**
+ * @brief 重置算法中所有数据
+ */
 void FrameHandlerBase::resetCommon()
 {
   map_.reset();

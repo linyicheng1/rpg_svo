@@ -103,15 +103,22 @@ void Map::addKeyframe(FramePtr new_keyframe)
   keyframes_.push_back(new_keyframe);
 }
 
+/**
+ * @brief 获取和当前帧有共视关系的关键帧
+ *        通过关键点来判断，能看见关键帧的一个关键点则认为具有共视关系
+ * @param frame
+ * @param close_kfs
+ */
 void Map::getCloseKeyframes(
     const FramePtr& frame,
     std::list< std::pair<FramePtr,double> >& close_kfs) const
 {
   for(auto kf : keyframes_)
-  {
+  {//遍历所有关键帧
+
     // check if kf has overlaping field of view with frame, use therefore KeyPoints
     for(auto keypoint : kf->key_pts_)
-    {
+    {// 遍历所有关键点，如果有一个关键点能被看到则认为有共视关系
       if(keypoint == nullptr)
         continue;
 
@@ -192,6 +199,10 @@ void Map::transform(const Matrix3d& R, const Vector3d& t, const double& s)
   }
 }
 
+/**
+ * @brief 每次开始处理新的一帧数据时调用
+ *        清空所有被丢弃点的数据
+ */
 void Map::emptyTrash()
 {
   std::for_each(trash_points_.begin(), trash_points_.end(), [&](Point*& pt){

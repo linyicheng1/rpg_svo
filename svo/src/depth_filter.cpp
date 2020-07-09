@@ -96,19 +96,27 @@ void DepthFilter::addFrame(FramePtr frame)
     updateSeeds(frame);
 }
 
+/**
+ * @brief 将关键帧数据添加到深度滤波器中
+ * @param frame       当前帧
+ * @param depth_mean  深度的均值
+ * @param depth_min   深度的最小值
+ */
 void DepthFilter::addKeyframe(FramePtr frame, double depth_mean, double depth_min)
 {
+  // 记录下新关键帧的最小值、均值
   new_keyframe_min_depth_ = depth_min;
   new_keyframe_mean_depth_ = depth_mean;
   if(thread_ != NULL)
   {
+    // 记录得到了新的一帧数据
     new_keyframe_ = frame;
     new_keyframe_set_ = true;
     seeds_updating_halt_ = true;
     frame_queue_cond_.notify_one();
   }
   else
-    initializeSeeds(frame);
+    initializeSeeds(frame);// 线程没开则初始化深度滤波器
 }
 
 void DepthFilter::initializeSeeds(FramePtr frame)
