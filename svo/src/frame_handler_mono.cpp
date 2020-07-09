@@ -84,9 +84,16 @@ void FrameHandlerMono::addImage(const cv::Mat& img, const double timestamp)
   // set last frame
   last_frame_ = new_frame_;
   new_frame_.reset();
+
   // finish processing
   finishFrameProcessingCommon(last_frame_->id_, res, last_frame_->nObs());
 }
+
+FramePtr FrameHandlerMono::lastFrame() { return last_frame_; }
+const set<FramePtr>& FrameHandlerMono::coreKeyframes() { return core_kfs_; }
+const vector<cv::Point2f>& FrameHandlerMono::initFeatureTrackRefPx() const { return klt_homography_init_.px_ref_; }
+const vector<cv::Point2f>& FrameHandlerMono::initFeatureTrackCurPx() const { return klt_homography_init_.px_cur_; }
+DepthFilter* FrameHandlerMono::depthFilter() const { return depth_filter_; }
 
 FrameHandlerMono::UpdateResult FrameHandlerMono::processFirstFrame()
 {
