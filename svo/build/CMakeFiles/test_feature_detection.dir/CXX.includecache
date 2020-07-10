@@ -84,7 +84,7 @@ chrono
 svo/global.h
 -
 
-/home/lyc/tmp/rpg_svo/svo/test/test_feature_detection.cpp
+/home/lyc/slam/rpg_svo/svo/test/test_feature_detection.cpp
 string.h
 -
 svo/global.h
@@ -108,9 +108,9 @@ vikit/abstract_camera.h
 vikit/atan_camera.h
 -
 test_utils.h
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 string.h
 -
 cstdlib

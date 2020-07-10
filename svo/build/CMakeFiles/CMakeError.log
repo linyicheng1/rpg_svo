@@ -1,24 +1,24 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/lyc/slam/rpg_svo/svo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a20c1/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a20c1.dir/build.make CMakeFiles/cmTC_a20c1.dir/build
-make[1]: Entering directory '/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_a20c1.dir/CheckSymbolExists.c.o
-/usr/bin/cc   -fPIC    -o CMakeFiles/cmTC_a20c1.dir/CheckSymbolExists.c.o   -c /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_a20c1
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a20c1.dir/link.txt --verbose=1
-/usr/bin/cc -fPIC     -rdynamic CMakeFiles/cmTC_a20c1.dir/CheckSymbolExists.c.o  -o cmTC_a20c1 
-CMakeFiles/cmTC_a20c1.dir/CheckSymbolExists.c.o: In function `main':
+Run Build Command:"/usr/bin/make" "cmTC_71872/fast"
+/usr/bin/make -f CMakeFiles/cmTC_71872.dir/build.make CMakeFiles/cmTC_71872.dir/build
+make[1]: Entering directory '/home/lyc/slam/rpg_svo/svo/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_71872.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fPIC    -o CMakeFiles/cmTC_71872.dir/CheckSymbolExists.c.o   -c /home/lyc/slam/rpg_svo/svo/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_71872
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_71872.dir/link.txt --verbose=1
+/usr/bin/cc -fPIC     -rdynamic CMakeFiles/cmTC_71872.dir/CheckSymbolExists.c.o  -o cmTC_71872 
+CMakeFiles/cmTC_71872.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_a20c1.dir/build.make:97: recipe for target 'cmTC_a20c1' failed
-make[1]: *** [cmTC_a20c1] Error 1
-make[1]: Leaving directory '/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_a20c1/fast' failed
-make: *** [cmTC_a20c1/fast] Error 2
+CMakeFiles/cmTC_71872.dir/build.make:97: recipe for target 'cmTC_71872' failed
+make[1]: *** [cmTC_71872] Error 1
+make[1]: Leaving directory '/home/lyc/slam/rpg_svo/svo/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_71872/fast' failed
+make: *** [cmTC_71872/fast] Error 2
 
-File /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/lyc/slam/rpg_svo/svo/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -34,22 +34,22 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/lyc/slam/rpg_svo/svo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2d764/fast"
-/usr/bin/make -f CMakeFiles/cmTC_2d764.dir/build.make CMakeFiles/cmTC_2d764.dir/build
-make[1]: Entering directory '/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_2d764.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_2d764.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_2d764
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2d764.dir/link.txt --verbose=1
-/usr/bin/cc -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_2d764.dir/CheckFunctionExists.c.o  -o cmTC_2d764 -lpthreads 
+Run Build Command:"/usr/bin/make" "cmTC_388fa/fast"
+/usr/bin/make -f CMakeFiles/cmTC_388fa.dir/build.make CMakeFiles/cmTC_388fa.dir/build
+make[1]: Entering directory '/home/lyc/slam/rpg_svo/svo/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_388fa.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_388fa.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_388fa
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_388fa.dir/link.txt --verbose=1
+/usr/bin/cc -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_388fa.dir/CheckFunctionExists.c.o  -o cmTC_388fa -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_2d764.dir/build.make:97: recipe for target 'cmTC_2d764' failed
-make[1]: *** [cmTC_2d764] Error 1
-make[1]: Leaving directory '/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_2d764/fast' failed
-make: *** [cmTC_2d764/fast] Error 2
+CMakeFiles/cmTC_388fa.dir/build.make:97: recipe for target 'cmTC_388fa' failed
+make[1]: *** [cmTC_388fa] Error 1
+make[1]: Leaving directory '/home/lyc/slam/rpg_svo/svo/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_388fa/fast' failed
+make: *** [cmTC_388fa/fast] Error 2
 
 

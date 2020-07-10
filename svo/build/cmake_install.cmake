@@ -1,4 +1,4 @@
-# Install script for directory: /home/lyc/tmp/rpg_svo/svo
+# Install script for directory: /home/lyc/slam/rpg_svo/svo
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/lyc/tmp/rpg_svo/svo/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/lyc/slam/rpg_svo/svo/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

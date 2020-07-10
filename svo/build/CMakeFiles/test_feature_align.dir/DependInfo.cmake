@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/lyc/tmp/rpg_svo/svo/test/test_feature_alignment.cpp" "/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles/test_feature_align.dir/test/test_feature_alignment.cpp.o"
+  "/home/lyc/slam/rpg_svo/svo/test/test_feature_alignment.cpp" "/home/lyc/slam/rpg_svo/svo/build/CMakeFiles/test_feature_align.dir/test/test_feature_alignment.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -28,7 +28,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles/svo.dir/DependInfo.cmake"
+  "/home/lyc/slam/rpg_svo/svo/build/CMakeFiles/svo.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

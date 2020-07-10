@@ -9,8 +9,8 @@ CMakeFiles/test_pose_optimizer.dir/test/test_pose_optimizer.cpp.o
  ../include/svo/global.h
  ../include/svo/point.h
  ../include/svo/pose_optimizer.h
- /home/lyc/tmp/rpg_svo/svo/test/test_pose_optimizer.cpp
- /home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+ /home/lyc/slam/rpg_svo/svo/test/test_pose_optimizer.cpp
+ /home/lyc/slam/rpg_svo/svo/test/test_utils.h
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense

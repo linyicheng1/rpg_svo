@@ -79,6 +79,10 @@ void DepthFilter::stopThread()
   }
 }
 
+/**
+ * @brief 添加一帧普通帧
+ * @param frame
+ */
 void DepthFilter::addFrame(FramePtr frame)
 {
   if(thread_ != NULL)
@@ -93,7 +97,7 @@ void DepthFilter::addFrame(FramePtr frame)
     frame_queue_cond_.notify_one();
   }
   else
-    updateSeeds(frame);
+    updateSeeds(frame);// 更新深度滤波器
 }
 
 /**
@@ -116,45 +120,63 @@ void DepthFilter::addKeyframe(FramePtr frame, double depth_mean, double depth_mi
     frame_queue_cond_.notify_one();
   }
   else
-    initializeSeeds(frame);// 线程没开则初始化深度滤波器
+    initializeSeeds(frame);// 初始化种子
 }
 
+/**
+ * @brief 初始化深度滤波器种子，在新加入一个关键帧时调用
+ * @param frame 关键帧
+ */
 void DepthFilter::initializeSeeds(FramePtr frame)
 {
   Features new_features;
+  // 设置当前已经有的跟踪到的特征点
   feature_detector_->setExistingFeatures(frame->fts_);
+  // 提取一些新的特征点
   feature_detector_->detect(frame.get(), frame->img_pyr_,
                             Config::triangMinCornerScore(), new_features);
-
   // initialize a seed for every new feature
+  // 暂停更新种子
   seeds_updating_halt_ = true;
   lock_t lock(seeds_mut_); // by locking the updateSeeds function stops
   ++Seed::batch_counter;
-  std::for_each(new_features.begin(), new_features.end(), [&](Feature* ftr){
+  // 遍历所有特征点
+  std::for_each(new_features.begin(), new_features.end(), [&](Feature* ftr)
+  {
+    // 特征点构造种子，压入list结构中
+    // 初始化当前深度为平均深度，范围为近距离到无穷远
     seeds_.push_back(Seed(ftr, new_keyframe_mean_depth_, new_keyframe_min_depth_));
   });
-
+  // 输出调试信息
   if(options_.verbose)
     SVO_INFO_STREAM("DepthFilter: Initialized "<<new_features.size()<<" new seeds");
+  // 开始更新所有深度滤波种子
   seeds_updating_halt_ = false;
 }
 
+/**
+ * @brief 删除一帧关键帧
+ * @param frame
+ */
 void DepthFilter::removeKeyframe(FramePtr frame)
 {
+  // 停止更新深度滤波器种子
   seeds_updating_halt_ = true;
   lock_t lock(seeds_mut_);
+  // 遍历所有的种子
   list<Seed>::iterator it=seeds_.begin();
   size_t n_removed = 0;
   while(it!=seeds_.end())
   {
     if(it->ftr->frame == frame.get())
-    {
+    {// 和被删除的帧相关的种子也被删除
       it = seeds_.erase(it);
       ++n_removed;
     }
     else
       ++it;
   }
+  // 重新开始更新
   seeds_updating_halt_ = false;
 }
 
@@ -174,6 +196,9 @@ void DepthFilter::reset()
     SVO_INFO_STREAM("DepthFilter: RESET.");
 }
 
+/**
+ * @brief 深度滤波器线程
+ */
 void DepthFilter::updateSeedsLoop()
 {
   while(!boost::this_thread::interruption_requested())
@@ -181,76 +206,103 @@ void DepthFilter::updateSeedsLoop()
     FramePtr frame;
     {
       lock_t lock(frame_queue_mut_);
+      // 等待新的一帧数据到来
       while(frame_queue_.empty() && new_keyframe_set_ == false)
         frame_queue_cond_.wait(lock);
       if(new_keyframe_set_)
-      {
+      {// 有新的一帧
+        // 清空标志位
         new_keyframe_set_ = false;
         seeds_updating_halt_ = false;
         clearFrameQueue();
+        // 拿到新关键帧的数据
         frame = new_keyframe_;
       }
       else
       {
+        // 不是关键帧则从所有未处理帧中那一帧出来
         frame = frame_queue_.front();
         frame_queue_.pop();
       }
     }
+    // 更新深度滤波器
     updateSeeds(frame);
+    // 如果是关键帧还需要初始化深度滤波器种子
     if(frame->isKeyframe())
       initializeSeeds(frame);
   }
 }
 
+/**
+ * @brief 更新所有深度滤波器种子
+ * @param frame 更新的一帧数据
+ */
 void DepthFilter::updateSeeds(FramePtr frame)
 {
   // update only a limited number of seeds, because we don't have time to do it
+  // 只更新有限数量的种子，没有时间更新所有的
   // for all the seeds in every frame!
   size_t n_updates=0, n_failed_matches=0, n_seeds = seeds_.size();
   lock_t lock(seeds_mut_);
   list<Seed>::iterator it=seeds_.begin();
-
+  // 当前相机焦距
   const double focal_length = frame->cam_->errorMultiplier2();
   double px_noise = 1.0;
+  // 设置当前误差为一个像素点引起的角度误差
   double px_error_angle = atan(px_noise/(2.0*focal_length))*2.0; // law of chord (sehnensatz)
-
+  // 遍历所有的种子
   while( it!=seeds_.end())
   {
     // set this value true when seeds updating should be interrupted
+    // 暂停更新
     if(seeds_updating_halt_)
       return;
 
     // check if seed is not already too old
-    if((Seed::batch_counter - it->batch_id) > options_.max_n_kfs) {
+    // 判断当前种子是否太老了
+    if((Seed::batch_counter - it->batch_id) > options_.max_n_kfs)
+    {// 迭代的次数太多还没有收敛的话就删除吧
       it = seeds_.erase(it);
       continue;
     }
 
     // check if point is visible in the current image
+    // 检测该点是否在当前图像中可以看到
     SE3 T_ref_cur = it->ftr->frame->T_f_w_ * frame->T_f_w_.inverse();
+    // 计算当前点的3d位置
     const Vector3d xyz_f(T_ref_cur.inverse()*(1.0/it->mu * it->ftr->f) );
-    if(xyz_f.z() < 0.0)  {
+    // 在摄像头后面的就不要
+    if(xyz_f.z() < 0.0)
+    {
       ++it; // behind the camera
       continue;
     }
-    if(!frame->cam_->isInFrame(frame->f2c(xyz_f).cast<int>())) {
+    // 不在图像内，也不要
+    if(!frame->cam_->isInFrame(frame->f2c(xyz_f).cast<int>()))
+    {
       ++it; // point does not project in image
       continue;
     }
 
     // we are using inverse depth coordinates
+    // 计算最小值
     float z_inv_min = it->mu + sqrt(it->sigma2);
+    // 避免到负数，0就是无穷远点
     float z_inv_max = max(it->mu - sqrt(it->sigma2), 0.00000001f);
     double z;
+
+    // 进行极线搜索
     if(!matcher_.findEpipolarMatchDirect(
         *it->ftr->frame, *frame, *it->ftr, 1.0/it->mu, 1.0/z_inv_min, 1.0/z_inv_max, z))
     {
+      // 如果失败的话，记录一下失败次数
       it->b++; // increase outlier probability when no match was found
       ++it;
       ++n_failed_matches;
       continue;
     }
 
+    // 计算 tau
     // compute tau
     double tau = computeTau(T_ref_cur, it->ftr->f, z, px_error_angle);
     double tau_inverse = 0.5 * (1.0/max(0.0000001, z-tau) - 1.0/(z+tau));

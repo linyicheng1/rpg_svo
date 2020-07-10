@@ -62,7 +62,7 @@ chrono
 svo/global.h
 -
 
-/home/lyc/tmp/rpg_svo/svo/test/test_matcher.cpp
+/home/lyc/slam/rpg_svo/svo/test/test_matcher.cpp
 algorithm
 -
 vikit/pinhole_camera.h
@@ -80,9 +80,9 @@ svo/config.h
 svo/feature.h
 -
 test_utils.h
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 string.h
 -
 cstdlib

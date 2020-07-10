@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lyc/tmp/rpg_svo/svo
+CMAKE_SOURCE_DIR = /home/lyc/slam/rpg_svo/svo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lyc/tmp/rpg_svo/svo/build
+CMAKE_BINARY_DIR = /home/lyc/slam/rpg_svo/svo/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/svo.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/svo.dir/flags.make
 
 CMakeFiles/svo.dir/src/frame_handler_mono.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/frame_handler_mono.cpp.o: ../src/frame_handler_mono.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/svo.dir/src/frame_handler_mono.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/frame_handler_mono.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/frame_handler_mono.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/svo.dir/src/frame_handler_mono.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/frame_handler_mono.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/frame_handler_mono.cpp
 
 CMakeFiles/svo.dir/src/frame_handler_mono.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/frame_handler_mono.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/frame_handler_mono.cpp > CMakeFiles/svo.dir/src/frame_handler_mono.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/frame_handler_mono.cpp > CMakeFiles/svo.dir/src/frame_handler_mono.cpp.i
 
 CMakeFiles/svo.dir/src/frame_handler_mono.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/frame_handler_mono.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/frame_handler_mono.cpp -o CMakeFiles/svo.dir/src/frame_handler_mono.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/frame_handler_mono.cpp -o CMakeFiles/svo.dir/src/frame_handler_mono.cpp.s
 
 CMakeFiles/svo.dir/src/frame_handler_mono.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/svo.dir/src/frame_handler_mono.cpp.o.provides.build: CMakeFiles/svo.d
 
 CMakeFiles/svo.dir/src/frame_handler_base.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/frame_handler_base.cpp.o: ../src/frame_handler_base.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/svo.dir/src/frame_handler_base.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/frame_handler_base.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/frame_handler_base.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/svo.dir/src/frame_handler_base.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/frame_handler_base.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/frame_handler_base.cpp
 
 CMakeFiles/svo.dir/src/frame_handler_base.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/frame_handler_base.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/frame_handler_base.cpp > CMakeFiles/svo.dir/src/frame_handler_base.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/frame_handler_base.cpp > CMakeFiles/svo.dir/src/frame_handler_base.cpp.i
 
 CMakeFiles/svo.dir/src/frame_handler_base.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/frame_handler_base.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/frame_handler_base.cpp -o CMakeFiles/svo.dir/src/frame_handler_base.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/frame_handler_base.cpp -o CMakeFiles/svo.dir/src/frame_handler_base.cpp.s
 
 CMakeFiles/svo.dir/src/frame_handler_base.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/svo.dir/src/frame_handler_base.cpp.o.provides.build: CMakeFiles/svo.d
 
 CMakeFiles/svo.dir/src/frame.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/frame.cpp.o: ../src/frame.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/svo.dir/src/frame.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/frame.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/frame.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/svo.dir/src/frame.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/frame.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/frame.cpp
 
 CMakeFiles/svo.dir/src/frame.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/frame.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/frame.cpp > CMakeFiles/svo.dir/src/frame.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/frame.cpp > CMakeFiles/svo.dir/src/frame.cpp.i
 
 CMakeFiles/svo.dir/src/frame.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/frame.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/frame.cpp -o CMakeFiles/svo.dir/src/frame.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/frame.cpp -o CMakeFiles/svo.dir/src/frame.cpp.s
 
 CMakeFiles/svo.dir/src/frame.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/svo.dir/src/frame.cpp.o.provides.build: CMakeFiles/svo.dir/src/frame.
 
 CMakeFiles/svo.dir/src/point.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/point.cpp.o: ../src/point.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/svo.dir/src/point.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/point.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/point.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/svo.dir/src/point.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/point.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/point.cpp
 
 CMakeFiles/svo.dir/src/point.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/point.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/point.cpp > CMakeFiles/svo.dir/src/point.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/point.cpp > CMakeFiles/svo.dir/src/point.cpp.i
 
 CMakeFiles/svo.dir/src/point.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/point.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/point.cpp -o CMakeFiles/svo.dir/src/point.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/point.cpp -o CMakeFiles/svo.dir/src/point.cpp.s
 
 CMakeFiles/svo.dir/src/point.cpp.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/svo.dir/src/point.cpp.o.provides.build: CMakeFiles/svo.dir/src/point.
 
 CMakeFiles/svo.dir/src/map.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/map.cpp.o: ../src/map.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/svo.dir/src/map.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/map.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/map.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/svo.dir/src/map.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/map.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/map.cpp
 
 CMakeFiles/svo.dir/src/map.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/map.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/map.cpp > CMakeFiles/svo.dir/src/map.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/map.cpp > CMakeFiles/svo.dir/src/map.cpp.i
 
 CMakeFiles/svo.dir/src/map.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/map.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/map.cpp -o CMakeFiles/svo.dir/src/map.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/map.cpp -o CMakeFiles/svo.dir/src/map.cpp.s
 
 CMakeFiles/svo.dir/src/map.cpp.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/svo.dir/src/map.cpp.o.provides.build: CMakeFiles/svo.dir/src/map.cpp.
 
 CMakeFiles/svo.dir/src/pose_optimizer.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/pose_optimizer.cpp.o: ../src/pose_optimizer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/svo.dir/src/pose_optimizer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/pose_optimizer.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/pose_optimizer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/svo.dir/src/pose_optimizer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/pose_optimizer.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/pose_optimizer.cpp
 
 CMakeFiles/svo.dir/src/pose_optimizer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/pose_optimizer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/pose_optimizer.cpp > CMakeFiles/svo.dir/src/pose_optimizer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/pose_optimizer.cpp > CMakeFiles/svo.dir/src/pose_optimizer.cpp.i
 
 CMakeFiles/svo.dir/src/pose_optimizer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/pose_optimizer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/pose_optimizer.cpp -o CMakeFiles/svo.dir/src/pose_optimizer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/pose_optimizer.cpp -o CMakeFiles/svo.dir/src/pose_optimizer.cpp.s
 
 CMakeFiles/svo.dir/src/pose_optimizer.cpp.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/svo.dir/src/pose_optimizer.cpp.o.provides.build: CMakeFiles/svo.dir/s
 
 CMakeFiles/svo.dir/src/initialization.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/initialization.cpp.o: ../src/initialization.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/svo.dir/src/initialization.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/initialization.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/initialization.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/svo.dir/src/initialization.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/initialization.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/initialization.cpp
 
 CMakeFiles/svo.dir/src/initialization.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/initialization.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/initialization.cpp > CMakeFiles/svo.dir/src/initialization.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/initialization.cpp > CMakeFiles/svo.dir/src/initialization.cpp.i
 
 CMakeFiles/svo.dir/src/initialization.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/initialization.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/initialization.cpp -o CMakeFiles/svo.dir/src/initialization.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/initialization.cpp -o CMakeFiles/svo.dir/src/initialization.cpp.s
 
 CMakeFiles/svo.dir/src/initialization.cpp.o.requires:
 
@@ -227,16 +227,16 @@ CMakeFiles/svo.dir/src/initialization.cpp.o.provides.build: CMakeFiles/svo.dir/s
 
 CMakeFiles/svo.dir/src/matcher.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/matcher.cpp.o: ../src/matcher.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/svo.dir/src/matcher.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/matcher.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/matcher.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/svo.dir/src/matcher.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/matcher.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/matcher.cpp
 
 CMakeFiles/svo.dir/src/matcher.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/matcher.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/matcher.cpp > CMakeFiles/svo.dir/src/matcher.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/matcher.cpp > CMakeFiles/svo.dir/src/matcher.cpp.i
 
 CMakeFiles/svo.dir/src/matcher.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/matcher.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/matcher.cpp -o CMakeFiles/svo.dir/src/matcher.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/matcher.cpp -o CMakeFiles/svo.dir/src/matcher.cpp.s
 
 CMakeFiles/svo.dir/src/matcher.cpp.o.requires:
 
@@ -251,16 +251,16 @@ CMakeFiles/svo.dir/src/matcher.cpp.o.provides.build: CMakeFiles/svo.dir/src/matc
 
 CMakeFiles/svo.dir/src/reprojector.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/reprojector.cpp.o: ../src/reprojector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/svo.dir/src/reprojector.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/reprojector.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/reprojector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/svo.dir/src/reprojector.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/reprojector.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/reprojector.cpp
 
 CMakeFiles/svo.dir/src/reprojector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/reprojector.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/reprojector.cpp > CMakeFiles/svo.dir/src/reprojector.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/reprojector.cpp > CMakeFiles/svo.dir/src/reprojector.cpp.i
 
 CMakeFiles/svo.dir/src/reprojector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/reprojector.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/reprojector.cpp -o CMakeFiles/svo.dir/src/reprojector.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/reprojector.cpp -o CMakeFiles/svo.dir/src/reprojector.cpp.s
 
 CMakeFiles/svo.dir/src/reprojector.cpp.o.requires:
 
@@ -275,16 +275,16 @@ CMakeFiles/svo.dir/src/reprojector.cpp.o.provides.build: CMakeFiles/svo.dir/src/
 
 CMakeFiles/svo.dir/src/feature_alignment.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/feature_alignment.cpp.o: ../src/feature_alignment.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/svo.dir/src/feature_alignment.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/feature_alignment.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/feature_alignment.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/svo.dir/src/feature_alignment.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/feature_alignment.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/feature_alignment.cpp
 
 CMakeFiles/svo.dir/src/feature_alignment.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/feature_alignment.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/feature_alignment.cpp > CMakeFiles/svo.dir/src/feature_alignment.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/feature_alignment.cpp > CMakeFiles/svo.dir/src/feature_alignment.cpp.i
 
 CMakeFiles/svo.dir/src/feature_alignment.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/feature_alignment.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/feature_alignment.cpp -o CMakeFiles/svo.dir/src/feature_alignment.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/feature_alignment.cpp -o CMakeFiles/svo.dir/src/feature_alignment.cpp.s
 
 CMakeFiles/svo.dir/src/feature_alignment.cpp.o.requires:
 
@@ -299,16 +299,16 @@ CMakeFiles/svo.dir/src/feature_alignment.cpp.o.provides.build: CMakeFiles/svo.di
 
 CMakeFiles/svo.dir/src/feature_detection.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/feature_detection.cpp.o: ../src/feature_detection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/svo.dir/src/feature_detection.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/feature_detection.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/feature_detection.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/svo.dir/src/feature_detection.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/feature_detection.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/feature_detection.cpp
 
 CMakeFiles/svo.dir/src/feature_detection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/feature_detection.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/feature_detection.cpp > CMakeFiles/svo.dir/src/feature_detection.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/feature_detection.cpp > CMakeFiles/svo.dir/src/feature_detection.cpp.i
 
 CMakeFiles/svo.dir/src/feature_detection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/feature_detection.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/feature_detection.cpp -o CMakeFiles/svo.dir/src/feature_detection.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/feature_detection.cpp -o CMakeFiles/svo.dir/src/feature_detection.cpp.s
 
 CMakeFiles/svo.dir/src/feature_detection.cpp.o.requires:
 
@@ -323,16 +323,16 @@ CMakeFiles/svo.dir/src/feature_detection.cpp.o.provides.build: CMakeFiles/svo.di
 
 CMakeFiles/svo.dir/src/depth_filter.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/depth_filter.cpp.o: ../src/depth_filter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/svo.dir/src/depth_filter.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/depth_filter.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/depth_filter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/svo.dir/src/depth_filter.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/depth_filter.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/depth_filter.cpp
 
 CMakeFiles/svo.dir/src/depth_filter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/depth_filter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/depth_filter.cpp > CMakeFiles/svo.dir/src/depth_filter.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/depth_filter.cpp > CMakeFiles/svo.dir/src/depth_filter.cpp.i
 
 CMakeFiles/svo.dir/src/depth_filter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/depth_filter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/depth_filter.cpp -o CMakeFiles/svo.dir/src/depth_filter.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/depth_filter.cpp -o CMakeFiles/svo.dir/src/depth_filter.cpp.s
 
 CMakeFiles/svo.dir/src/depth_filter.cpp.o.requires:
 
@@ -347,16 +347,16 @@ CMakeFiles/svo.dir/src/depth_filter.cpp.o.provides.build: CMakeFiles/svo.dir/src
 
 CMakeFiles/svo.dir/src/config.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/config.cpp.o: ../src/config.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/svo.dir/src/config.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/config.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/config.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/svo.dir/src/config.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/config.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/config.cpp
 
 CMakeFiles/svo.dir/src/config.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/config.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/config.cpp > CMakeFiles/svo.dir/src/config.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/config.cpp > CMakeFiles/svo.dir/src/config.cpp.i
 
 CMakeFiles/svo.dir/src/config.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/config.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/config.cpp -o CMakeFiles/svo.dir/src/config.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/config.cpp -o CMakeFiles/svo.dir/src/config.cpp.s
 
 CMakeFiles/svo.dir/src/config.cpp.o.requires:
 
@@ -371,16 +371,16 @@ CMakeFiles/svo.dir/src/config.cpp.o.provides.build: CMakeFiles/svo.dir/src/confi
 
 CMakeFiles/svo.dir/src/sparse_img_align.cpp.o: CMakeFiles/svo.dir/flags.make
 CMakeFiles/svo.dir/src/sparse_img_align.cpp.o: ../src/sparse_img_align.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/svo.dir/src/sparse_img_align.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/sparse_img_align.cpp.o -c /home/lyc/tmp/rpg_svo/svo/src/sparse_img_align.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/svo.dir/src/sparse_img_align.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svo.dir/src/sparse_img_align.cpp.o -c /home/lyc/slam/rpg_svo/svo/src/sparse_img_align.cpp
 
 CMakeFiles/svo.dir/src/sparse_img_align.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svo.dir/src/sparse_img_align.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/tmp/rpg_svo/svo/src/sparse_img_align.cpp > CMakeFiles/svo.dir/src/sparse_img_align.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lyc/slam/rpg_svo/svo/src/sparse_img_align.cpp > CMakeFiles/svo.dir/src/sparse_img_align.cpp.i
 
 CMakeFiles/svo.dir/src/sparse_img_align.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svo.dir/src/sparse_img_align.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/tmp/rpg_svo/svo/src/sparse_img_align.cpp -o CMakeFiles/svo.dir/src/sparse_img_align.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lyc/slam/rpg_svo/svo/src/sparse_img_align.cpp -o CMakeFiles/svo.dir/src/sparse_img_align.cpp.s
 
 CMakeFiles/svo.dir/src/sparse_img_align.cpp.o.requires:
 
@@ -466,7 +466,7 @@ svo_EXTERNAL_OBJECTS =
 ../lib/libsvo.so: /usr/local/lib/libopencv_core.so.3.4.0
 ../lib/libsvo.so: /usr/local/lib/libopencv_cudev.so.3.4.0
 ../lib/libsvo.so: CMakeFiles/svo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX shared library ../lib/libsvo.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX shared library ../lib/libsvo.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/svo.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -496,6 +496,6 @@ CMakeFiles/svo.dir/clean:
 .PHONY : CMakeFiles/svo.dir/clean
 
 CMakeFiles/svo.dir/depend:
-	cd /home/lyc/tmp/rpg_svo/svo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lyc/tmp/rpg_svo/svo /home/lyc/tmp/rpg_svo/svo /home/lyc/tmp/rpg_svo/svo/build /home/lyc/tmp/rpg_svo/svo/build /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles/svo.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/lyc/slam/rpg_svo/svo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lyc/slam/rpg_svo/svo /home/lyc/slam/rpg_svo/svo /home/lyc/slam/rpg_svo/svo/build /home/lyc/slam/rpg_svo/svo/build /home/lyc/slam/rpg_svo/svo/build/CMakeFiles/svo.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/svo.dir/depend
 

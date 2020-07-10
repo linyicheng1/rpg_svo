@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lyc/tmp/rpg_svo/svo
+CMAKE_SOURCE_DIR = /home/lyc/slam/rpg_svo/svo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lyc/tmp/rpg_svo/svo/build
+CMAKE_BINARY_DIR = /home/lyc/slam/rpg_svo/svo/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/test_pose_optimizer.dir
@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/lyc/tmp/rpg_svo/svo/build
 CMakeFiles/test_pose_optimizer.dir/all: CMakeFiles/svo.dir/all
 	$(MAKE) -f CMakeFiles/test_pose_optimizer.dir/build.make CMakeFiles/test_pose_optimizer.dir/depend
 	$(MAKE) -f CMakeFiles/test_pose_optimizer.dir/build.make CMakeFiles/test_pose_optimizer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=26,27 "Built target test_pose_optimizer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=26,27 "Built target test_pose_optimizer"
 .PHONY : CMakeFiles/test_pose_optimizer.dir/all
 
 # Include target in all.
@@ -76,9 +76,9 @@ all: CMakeFiles/test_pose_optimizer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_pose_optimizer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_pose_optimizer.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_pose_optimizer.dir/rule
 
 # Convenience name for target.
@@ -103,7 +103,7 @@ clean: CMakeFiles/test_pose_optimizer.dir/clean
 CMakeFiles/test_sparse_img_align.dir/all: CMakeFiles/svo.dir/all
 	$(MAKE) -f CMakeFiles/test_sparse_img_align.dir/build.make CMakeFiles/test_sparse_img_align.dir/depend
 	$(MAKE) -f CMakeFiles/test_sparse_img_align.dir/build.make CMakeFiles/test_sparse_img_align.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=28,29 "Built target test_sparse_img_align"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=28,29 "Built target test_sparse_img_align"
 .PHONY : CMakeFiles/test_sparse_img_align.dir/all
 
 # Include target in all.
@@ -113,9 +113,9 @@ all: CMakeFiles/test_sparse_img_align.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_sparse_img_align.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_sparse_img_align.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_sparse_img_align.dir/rule
 
 # Convenience name for target.
@@ -140,7 +140,7 @@ clean: CMakeFiles/test_sparse_img_align.dir/clean
 CMakeFiles/test_feature_align.dir/all: CMakeFiles/svo.dir/all
 	$(MAKE) -f CMakeFiles/test_feature_align.dir/build.make CMakeFiles/test_feature_align.dir/depend
 	$(MAKE) -f CMakeFiles/test_feature_align.dir/build.make CMakeFiles/test_feature_align.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=18,19 "Built target test_feature_align"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=18,19 "Built target test_feature_align"
 .PHONY : CMakeFiles/test_feature_align.dir/all
 
 # Include target in all.
@@ -150,9 +150,9 @@ all: CMakeFiles/test_feature_align.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_feature_align.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_feature_align.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_feature_align.dir/rule
 
 # Convenience name for target.
@@ -177,7 +177,7 @@ clean: CMakeFiles/test_feature_align.dir/clean
 CMakeFiles/test_pipeline.dir/all: CMakeFiles/svo.dir/all
 	$(MAKE) -f CMakeFiles/test_pipeline.dir/build.make CMakeFiles/test_pipeline.dir/depend
 	$(MAKE) -f CMakeFiles/test_pipeline.dir/build.make CMakeFiles/test_pipeline.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=24,25 "Built target test_pipeline"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=24,25 "Built target test_pipeline"
 .PHONY : CMakeFiles/test_pipeline.dir/all
 
 # Include target in all.
@@ -187,9 +187,9 @@ all: CMakeFiles/test_pipeline.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_pipeline.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_pipeline.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_pipeline.dir/rule
 
 # Convenience name for target.
@@ -214,7 +214,7 @@ clean: CMakeFiles/test_pipeline.dir/clean
 CMakeFiles/test_depth_filter.dir/all: CMakeFiles/svo.dir/all
 	$(MAKE) -f CMakeFiles/test_depth_filter.dir/build.make CMakeFiles/test_depth_filter.dir/depend
 	$(MAKE) -f CMakeFiles/test_depth_filter.dir/build.make CMakeFiles/test_depth_filter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=16,17 "Built target test_depth_filter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=16,17 "Built target test_depth_filter"
 .PHONY : CMakeFiles/test_depth_filter.dir/all
 
 # Include target in all.
@@ -224,9 +224,9 @@ all: CMakeFiles/test_depth_filter.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_depth_filter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_depth_filter.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_depth_filter.dir/rule
 
 # Convenience name for target.
@@ -251,7 +251,7 @@ clean: CMakeFiles/test_depth_filter.dir/clean
 CMakeFiles/test_matcher.dir/all: CMakeFiles/svo.dir/all
 	$(MAKE) -f CMakeFiles/test_matcher.dir/build.make CMakeFiles/test_matcher.dir/depend
 	$(MAKE) -f CMakeFiles/test_matcher.dir/build.make CMakeFiles/test_matcher.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=22,23 "Built target test_matcher"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=22,23 "Built target test_matcher"
 .PHONY : CMakeFiles/test_matcher.dir/all
 
 # Include target in all.
@@ -261,9 +261,9 @@ all: CMakeFiles/test_matcher.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_matcher.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_matcher.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_matcher.dir/rule
 
 # Convenience name for target.
@@ -288,7 +288,7 @@ clean: CMakeFiles/test_matcher.dir/clean
 CMakeFiles/svo.dir/all:
 	$(MAKE) -f CMakeFiles/svo.dir/build.make CMakeFiles/svo.dir/depend
 	$(MAKE) -f CMakeFiles/svo.dir/build.make CMakeFiles/svo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target svo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target svo"
 .PHONY : CMakeFiles/svo.dir/all
 
 # Include target in all.
@@ -298,9 +298,9 @@ all: CMakeFiles/svo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/svo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/svo.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 0
 .PHONY : CMakeFiles/svo.dir/rule
 
 # Convenience name for target.
@@ -325,7 +325,7 @@ clean: CMakeFiles/svo.dir/clean
 CMakeFiles/test_feature_detection.dir/all: CMakeFiles/svo.dir/all
 	$(MAKE) -f CMakeFiles/test_feature_detection.dir/build.make CMakeFiles/test_feature_detection.dir/depend
 	$(MAKE) -f CMakeFiles/test_feature_detection.dir/build.make CMakeFiles/test_feature_detection.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/tmp/rpg_svo/svo/build/CMakeFiles --progress-num=20,21 "Built target test_feature_detection"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lyc/slam/rpg_svo/svo/build/CMakeFiles --progress-num=20,21 "Built target test_feature_detection"
 .PHONY : CMakeFiles/test_feature_detection.dir/all
 
 # Include target in all.
@@ -335,9 +335,9 @@ all: CMakeFiles/test_feature_detection.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_feature_detection.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_feature_detection.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/tmp/rpg_svo/svo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lyc/slam/rpg_svo/svo/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_feature_detection.dir/rule
 
 # Convenience name for target.

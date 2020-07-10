@@ -6,5 +6,5 @@ CXX_FLAGS = -Wall -D_LINUX -D_REENTRANT -march=native -Wno-unused-variable -Wno-
 
 CXX_DEFINES = -DOPENCV_TRAITS_ENABLE_DEPRECATED -DSVO_TRACE
 
-CXX_INCLUDES = -I/home/lyc/tmp/rpg_svo/svo/include -I/usr/include/eigen3 -isystem /usr/local/include -isystem /usr/local/include/opencv -I/home/lyc/Downloads/Sophus -I/usr/local/include/eigen3 -I/home/lyc/Downloads/fast/include -I/home/lyc/Downloads/rpg_vikit/vikit_common/include 
+CXX_INCLUDES = -I/home/lyc/slam/rpg_svo/svo/include -I/usr/include/eigen3 -isystem /usr/local/include -isystem /usr/local/include/opencv -I/home/lyc/Downloads/Sophus -I/usr/local/include/eigen3 -I/home/lyc/Downloads/fast/include -I/home/lyc/Downloads/rpg_vikit/vikit_common/include 
 

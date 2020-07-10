@@ -146,6 +146,16 @@ bool align1D(
   return converged;
 }
 
+/**
+ * @brief 二维搜索最佳匹配点
+ * @param cur_img
+ * @param ref_patch_with_border
+ * @param ref_patch
+ * @param n_iter
+ * @param cur_px_estimate
+ * @param no_simd
+ * @return
+ */
 bool align2D(
     const cv::Mat& cur_img,
     uint8_t* ref_patch_with_border,

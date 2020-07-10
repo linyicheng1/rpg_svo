@@ -39,6 +39,10 @@ void AbstractDetector::resetGrid()
   std::fill(grid_occupancy_.begin(), grid_occupancy_.end(), false);
 }
 
+/**
+ * @brief 设置当前帧已经有的特征点，该栅格部分就会被占用，从而不再提取特征点
+ * @param fts 从上一帧跟踪得到的特征点
+ */
 void AbstractDetector::setExistingFeatures(const Features& fts)
 {
   std::for_each(fts.begin(), fts.end(), [&](Feature* i){

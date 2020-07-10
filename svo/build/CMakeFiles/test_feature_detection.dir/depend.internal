@@ -9,8 +9,8 @@ CMakeFiles/test_feature_detection.dir/test/test_feature_detection.cpp.o
  ../include/svo/frame.h
  ../include/svo/global.h
  ../include/svo/matcher.h
- /home/lyc/tmp/rpg_svo/svo/test/test_feature_detection.cpp
- /home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+ /home/lyc/slam/rpg_svo/svo/test/test_feature_detection.cpp
+ /home/lyc/slam/rpg_svo/svo/test/test_utils.h
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense

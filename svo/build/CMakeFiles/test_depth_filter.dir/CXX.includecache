@@ -90,7 +90,7 @@ boost/noncopyable.hpp
 svo/global.h
 -
 
-/home/lyc/tmp/rpg_svo/svo/test/test_depth_filter.cpp
+/home/lyc/slam/rpg_svo/svo/test/test_depth_filter.cpp
 list
 -
 vector
@@ -132,9 +132,9 @@ svo/point.h
 svo/config.h
 -
 test_utils.h
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 string.h
 -
 cstdlib

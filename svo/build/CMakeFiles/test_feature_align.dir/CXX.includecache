@@ -38,7 +38,7 @@ ros/console.h
 chrono
 -
 
-/home/lyc/tmp/rpg_svo/svo/test/test_feature_alignment.cpp
+/home/lyc/slam/rpg_svo/svo/test/test_feature_alignment.cpp
 string.h
 -
 svo/global.h
@@ -50,11 +50,11 @@ vikit/timer.h
 vikit/aligned_mem.h
 -
 test_utils.h
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 arm_neon.h
 -
 
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 string.h
 -
 cstdlib

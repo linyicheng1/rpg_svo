@@ -108,7 +108,7 @@ svo/global.h
 svo/matcher.h
 -
 
-/home/lyc/tmp/rpg_svo/svo/test/test_pipeline.cpp
+/home/lyc/slam/rpg_svo/svo/test/test_pipeline.cpp
 svo/config.h
 -
 svo/frame_handler_mono.h
@@ -138,9 +138,9 @@ sophus/se3.h
 iostream
 -
 test_utils.h
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 string.h
 -
 cstdlib

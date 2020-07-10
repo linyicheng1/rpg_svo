@@ -115,6 +115,7 @@ void Reprojector::reprojectMap(
       if((*it_ftr)->point->last_projected_kf_id_ == frame->id_)
         continue;
       (*it_ftr)->point->last_projected_kf_id_ = frame->id_;
+      // 计算每一个关键帧在当前帧上的投影
       if(reprojectPoint(frame, (*it_ftr)->point))
         overlap_kfs.back().second++;
     }
@@ -122,17 +123,19 @@ void Reprojector::reprojectMap(
   SVO_STOP_TIMER("reproject_kfs");
 
   // Now project all point candidates
+  // 投影所有的候选点
   SVO_START_TIMER("reproject_candidates");
   {
     boost::unique_lock<boost::mutex> lock(map_.point_candidates_.mut_);
     auto it=map_.point_candidates_.candidates_.begin();
     while(it!=map_.point_candidates_.candidates_.end())
-    {
+    {// 遍历所有的候选点
       if(!reprojectPoint(frame, it->first))
-      {
+      {// 投影到当前帧失败
+        // 失败得分+3
         it->first->n_failed_reproj_ += 3;
         if(it->first->n_failed_reproj_ > 30)
-        {
+        {// 失败次数太多，则将地图点删掉
           map_.point_candidates_.deleteCandidate(*it);
           it = map_.point_candidates_.candidates_.erase(it);
           continue;
@@ -146,12 +149,14 @@ void Reprojector::reprojectMap(
   // Now we go through each grid cell and select one point to match.
   // At the end, we should have at maximum one reprojected point per cell.
   SVO_START_TIMER("feature_align");
+  // 特征点对齐，重新搜索得到更好的匹配
   for(size_t i=0; i<grid_.cells.size(); ++i)
-  {
+  {// 遍历栅格，每一个栅格只能有一个点，避免特征点扎堆出现
     // we prefer good quality points over unkown quality (more likely to match)
     // and unknown quality over candidates (position not optimized)
     if(reprojectCell(*grid_.cells.at(grid_.cell_order[i]), frame))
       ++n_matches_;
+    // 找到了指定数量的点则结束
     if(n_matches_ > (size_t) Config::maxFts())
       break;
   }
@@ -165,14 +170,21 @@ bool Reprojector::pointQualityComparator(Candidate& lhs, Candidate& rhs)
   return false;
 }
 
+/**
+ * @brief 在给定栅格内找到一个最好的匹配点
+ * @param cell  栅格
+ * @param frame 当前帧
+ * @return      是否成功找到
+ */
 bool Reprojector::reprojectCell(Cell& cell, FramePtr frame)
 {
+  // 对栅格内所有数据进行排序
   cell.sort(boost::bind(&Reprojector::pointQualityComparator, _1, _2));
   Cell::iterator it=cell.begin();
   while(it!=cell.end())
-  {
+  {// 遍历整个栅格
     ++n_trials_;
-
+    // 如果点的状态是被删掉了，则在栅格信息中也会被删掉
     if(it->pt->type_ == Point::TYPE_DELETED)
     {
       it = cell.erase(it);
@@ -180,8 +192,10 @@ bool Reprojector::reprojectCell(Cell& cell, FramePtr frame)
     }
 
     bool found_match = true;
+    // 先直接寻找匹配点
     if(options_.find_match_direct)
       found_match = matcher_.findMatchDirect(*it->pt, *frame, it->px);
+    // 如果直接寻找方法失败
     if(!found_match)
     {
       it->pt->n_failed_reproj_++;
@@ -202,7 +216,6 @@ bool Reprojector::reprojectCell(Cell& cell, FramePtr frame)
     // Here we add a reference in the feature to the 3D point, the other way
     // round is only done if this frame is selected as keyframe.
     new_feature->point = it->pt;
-
     if(matcher_.ref_ftr_->type == Feature::EDGELET)
     {
       new_feature->type = Feature::EDGELET;
@@ -212,6 +225,7 @@ bool Reprojector::reprojectCell(Cell& cell, FramePtr frame)
 
     // If the keyframe is selected and we reproject the rest, we don't have to
     // check this point anymore.
+    // 计算过一次的数据就删除
     it = cell.erase(it);
 
     // Maximum one point per cell.

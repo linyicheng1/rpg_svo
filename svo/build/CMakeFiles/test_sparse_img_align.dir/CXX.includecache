@@ -78,7 +78,7 @@ vikit/performance_monitor.h
 svo/global.h
 -
 
-/home/lyc/tmp/rpg_svo/svo/test/test_sparse_img_align.cpp
+/home/lyc/slam/rpg_svo/svo/test/test_sparse_img_align.cpp
 vikit/pinhole_camera.h
 -
 vikit/math_utils.h
@@ -104,9 +104,9 @@ svo/feature.h
 svo/config.h
 -
 test_utils.h
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 
-/home/lyc/tmp/rpg_svo/svo/test/test_utils.h
+/home/lyc/slam/rpg_svo/svo/test/test_utils.h
 string.h
 -
 cstdlib

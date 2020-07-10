@@ -29,7 +29,17 @@
 namespace svo {
 
 namespace warp {
-
+/**
+ * @brief 对点进行仿射变换
+ * @param cam_ref      参考相机模型
+ * @param cam_cur      当前相机模型
+ * @param px_ref       参考系下的二维坐标
+ * @param f_ref        参考系下的球坐标
+ * @param depth_ref    参考系下的深度
+ * @param T_cur_ref    当前帧和参考帧的变换关系
+ * @param level_ref    参考帧的金字塔层
+ * @param A_cur_ref    返回仿射矩阵
+ */
 void getWarpMatrixAffine(
     const vk::AbstractCamera& cam_ref,
     const vk::AbstractCamera& cam_cur,
@@ -41,10 +51,14 @@ void getWarpMatrixAffine(
     Matrix2d& A_cur_ref)
 {
   // Compute affine warp matrix A_ref_cur
+  // half patch 大小为5
   const int halfpatch_size = 5;
+  // 参考系下点的三维坐标
   const Vector3d xyz_ref(f_ref*depth_ref);
+  // 仿射变换中的du、dv
   Vector3d xyz_du_ref(cam_ref.cam2world(px_ref + Vector2d(halfpatch_size,0)*(1<<level_ref)));
   Vector3d xyz_dv_ref(cam_ref.cam2world(px_ref + Vector2d(0,halfpatch_size)*(1<<level_ref)));
+
   xyz_du_ref *= xyz_ref[2]/xyz_du_ref[2];
   xyz_dv_ref *= xyz_ref[2]/xyz_dv_ref[2];
   const Vector2d px_cur(cam_cur.world2cam(T_cur_ref*(xyz_ref)));
@@ -132,23 +146,33 @@ void Matcher::createPatchFromPatchWithBorder()
   }
 }
 
+/**
+ * @brief 直接寻找匹配点
+ * @param pt         地图点三维坐标
+ * @param cur_frame  当前帧
+ * @param px_cur     匹配得到特征点uv坐标
+ * @return           是否找到对应匹配点
+ */
 bool Matcher::findMatchDirect(
     const Point& pt,
     const Frame& cur_frame,
     Vector2d& px_cur)
 {
+  // 先判断和参考帧有无共视关系
   if(!pt.getCloseViewObs(cur_frame.pos(), ref_ftr_))
     return false;
-
+  // 计算该点是否在当前帧内
   if(!ref_ftr_->frame->cam_->isInFrame(
       ref_ftr_->px.cast<int>()/(1<<ref_ftr_->level), halfpatch_size_+2, ref_ftr_->level))
     return false;
 
   // warp affine
+  // 仿射变换
   warp::getWarpMatrixAffine(
       *ref_ftr_->frame->cam_, *cur_frame.cam_, ref_ftr_->px, ref_ftr_->f,
       (ref_ftr_->frame->pos() - pt.pos_).norm(),
       cur_frame.T_f_w_ * ref_ftr_->frame->T_f_w_.inverse(), ref_ftr_->level, A_cur_ref_);
+
   search_level_ = warp::getBestSearchLevel(A_cur_ref_, Config::nPyrLevels()-1);
   warp::warpAffine(A_cur_ref_, ref_ftr_->frame->img_pyr_[ref_ftr_->level], ref_ftr_->px,
                    ref_ftr_->level, search_level_, halfpatch_size_+1, patch_with_border_);
@@ -158,24 +182,39 @@ bool Matcher::findMatchDirect(
   Vector2d px_scaled(px_cur/(1<<search_level_));
 
   bool success = false;
+  // 如果是边缘点
   if(ref_ftr_->type == Feature::EDGELET)
   {
     Vector2d dir_cur(A_cur_ref_*ref_ftr_->grad);
     dir_cur.normalize();
+    // 一维搜索
     success = feature_alignment::align1D(
           cur_frame.img_pyr_[search_level_], dir_cur.cast<float>(),
           patch_with_border_, patch_, options_.align_max_iter, px_scaled, h_inv_);
   }
   else
-  {
+  {// 非边缘点
+    // 二维搜索
     success = feature_alignment::align2D(
       cur_frame.img_pyr_[search_level_], patch_with_border_, patch_,
       options_.align_max_iter, px_scaled);
   }
+  // 计算当前匹配点的坐标px_cur，进行尺度缩放
   px_cur = px_scaled * (1<<search_level_);
   return success;
 }
 
+/**
+ * @brief 进行极线搜索
+ * @param ref_frame
+ * @param cur_frame
+ * @param ref_ftr
+ * @param d_estimate
+ * @param d_min
+ * @param d_max
+ * @param depth
+ * @return
+ */
 bool Matcher::findEpipolarMatchDirect(
     const Frame& ref_frame,
     const Frame& cur_frame,
