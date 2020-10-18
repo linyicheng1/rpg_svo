@@ -162,17 +162,21 @@ void SparseImgAlign::precomputeReferencePatches()
   have_ref_patch_cache_ = true;
 }
 
+/**
+ * @brief 计算光度误差的残差
+ * */
 double SparseImgAlign::computeResiduals(
-    const SE3& T_cur_from_ref,
-    bool linearize_system,
+    const SE3& T_cur_from_ref,// 当前的位姿
+    bool linearize_system,// true 计算线性化导数
     bool compute_weight_scale)
 {
   // Warp the (cur)rent image such that it aligns with the (ref)erence image
+  // 当前图片为金字塔level层的图片
   const cv::Mat& cur_img = cur_frame_->img_pyr_.at(level_);
-
+  // 计算得到的残差图片
   if(linearize_system && display_)
     resimg_ = cv::Mat(cur_img.size(), CV_32F, cv::Scalar(0));
-
+  //TODO  
   if(have_ref_patch_cache_ == false)
     precomputeReferencePatches();
 
@@ -187,44 +191,58 @@ double SparseImgAlign::computeResiduals(
   float chi2 = 0.0;
   size_t feature_counter = 0; // is used to compute the index of the cached jacobian
   std::vector<bool>::iterator visiblity_it = visible_fts_.begin();
+  // 遍历参考图片中的所有特征点
   for(auto it=ref_frame_->fts_.begin(); it!=ref_frame_->fts_.end();
       ++it, ++feature_counter, ++visiblity_it)
   {
     // check if feature is within image
+    // 如果当前点不可见则继续
     if(!*visiblity_it)
       continue;
 
     // compute pixel location in cur img
+    // 深度,地图点按照x,y,z来存储
     const double depth = ((*it)->point->pos_ - ref_pos).norm();
+    // 在参考相机坐标系下的x,y,z位置
     const Vector3d xyz_ref((*it)->f*depth);
+    // 在当前相机坐标系下的x,y,z位置
     const Vector3d xyz_cur(T_cur_from_ref * xyz_ref);
+    // 在当前帧下的预测位置
     const Vector2f uv_cur_pyr(cur_frame_->cam_->world2cam(xyz_cur).cast<float>() * scale);
+    // 记录一下数据，转换成整形
     const float u_cur = uv_cur_pyr[0];
     const float v_cur = uv_cur_pyr[1];
     const int u_cur_i = floorf(u_cur);
     const int v_cur_i = floorf(v_cur);
-
+    // 判断当前关键点是否在图像内
     // check if projection is within the image
     if(u_cur_i < 0 || v_cur_i < 0 || u_cur_i-border < 0 || v_cur_i-border < 0 || u_cur_i+border >= cur_img.cols || v_cur_i+border >= cur_img.rows)
       continue;
 
     // compute bilateral interpolation weights for the current image
+    // 由于强制转换导致的误差
     const float subpix_u_cur = u_cur-u_cur_i;
     const float subpix_v_cur = v_cur-v_cur_i;
+    // 计算出了一些系数
     const float w_cur_tl = (1.0-subpix_u_cur) * (1.0-subpix_v_cur);
     const float w_cur_tr = subpix_u_cur * (1.0-subpix_v_cur);
     const float w_cur_bl = (1.0-subpix_u_cur) * subpix_v_cur;
     const float w_cur_br = subpix_u_cur * subpix_v_cur;
+
     float* ref_patch_cache_ptr = reinterpret_cast<float*>(ref_patch_cache_.data) + patch_area_*feature_counter;
     size_t pixel_counter = 0; // is used to compute the index of the cached jacobian
+    // 遍历 patch patch 大小为4，4的倍数应该可以进行加速操作
     for(int y=0; y<patch_size_; ++y)
     {
+      // 先拿到patch中的一点
       uint8_t* cur_img_ptr = (uint8_t*) cur_img.data + (v_cur_i+y-patch_halfsize_)*stride + (u_cur_i-patch_halfsize_);
 
       for(int x=0; x<patch_size_; ++x, ++pixel_counter, ++cur_img_ptr, ++ref_patch_cache_ptr)
       {
         // compute residual
+        // 通过系数计算真实的灰度（这里似乎没有做仿射变换）
         const float intensity_cur = w_cur_tl*cur_img_ptr[0] + w_cur_tr*cur_img_ptr[1] + w_cur_bl*cur_img_ptr[stride] + w_cur_br*cur_img_ptr[stride+1];
+        // 得到残差
         const float res = intensity_cur - (*ref_patch_cache_ptr);
 
         // used to compute scale for robust cost
@@ -239,13 +257,17 @@ double SparseImgAlign::computeResiduals(
 
         chi2 += res*res*weight;
         n_meas_++;
-
+        // 计算雅克比
         if(linearize_system)
         {
+          // 实际的H矩阵为6x6,而J矩阵则和点的数量有关，为 6 x feature_counter*patch_area_
           // compute Jacobian, weighted Hessian and weighted "steepest descend images" (times error)
           const Vector6d J(jacobian_cache_.col(feature_counter*patch_area_ + pixel_counter));
+          // H 矩阵，其实可以等jacobian_cache_全部计算完成一次性计算出H的
           H_.noalias() += J*J.transpose()*weight;
+          // J 矩阵
           Jres_.noalias() -= J*res*weight;
+          // 图像中显示残差
           if(display_)
             resimg_.at<float>((int) v_cur+y-patch_halfsize_, (int) u_cur+x-patch_halfsize_) = res/255.0;
         }
@@ -254,12 +276,14 @@ double SparseImgAlign::computeResiduals(
   }
 
   // compute the weights on the first iteration
+  // 在第一次迭代时计算权重，没有用到
   if(compute_weight_scale && iter_ == 0)
     scale_ = scale_estimator_->compute(errors);
 
   return chi2/n_meas_;
 }
 
+// 即为对线性方程组的求解，使用LDLT分解
 int SparseImgAlign::solve()
 {
   x_ = H_.ldlt().solve(Jres_);
@@ -282,9 +306,8 @@ void SparseImgAlign::finishIteration()
 {
   if(display_)
   {
-    cv::namedWindow("residuals", CV_WINDOW_AUTOSIZE);
+    cv::namedWindow("residuals", cv::WINDOW_AUTOSIZE);
     cv::imshow("residuals", resimg_*10);
-    cv::waitKey(0);
   }
 }
 

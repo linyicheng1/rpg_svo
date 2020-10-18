@@ -94,16 +94,29 @@ void FrameHandlerMono::addImage(const cv::Mat& img, const double timestamp)
   // 第一帧、第二帧：初始化部分
   // default:正常执行部分
   // relocalizing:重定位部分
+  
   UpdateResult res = RESULT_FAILURE;
   if(stage_ == STAGE_DEFAULT_FRAME)
+  {
+    std::cout<<"vo state:"<<"STAGE_DEFAULT_FRAME"<<std::endl;
     res = processFrame();
+  }
   else if(stage_ == STAGE_SECOND_FRAME)
+  {
+    std::cout<<"vo state:"<<"STAGE_SECOND_FRAME"<<std::endl;
     res = processSecondFrame();
+  }
   else if(stage_ == STAGE_FIRST_FRAME)
+  {
+    std::cout<<"vo state:"<<"STAGE_FIRST_FRAME"<<std::endl;
     res = processFirstFrame();
+  }
   else if(stage_ == STAGE_RELOCALIZING)
+  {
+    std::cout<<"vo state:"<<"STAGE_RELOCALIZING"<<std::endl;
     res = relocalizeFrame(SE3(Matrix3d::Identity(), Vector3d::Zero()),
                           map_.getClosestKeyframe(last_frame_));
+  }
 
   // 记录当前帧参数
   // set last frame
@@ -210,13 +223,15 @@ FrameHandlerBase::UpdateResult FrameHandlerMono::processFrame()
   SVO_START_TIMER("sparse_img_align");
   // 图像对齐类初始化
   SparseImgAlign img_align(Config::kltMaxLevel(), Config::kltMinLevel(),
-                           30, SparseImgAlign::GaussNewton, false, false);
+                           30, SparseImgAlign::GaussNewton, true, false);
+                          
   // 进行对齐，获取初始值
   // ref_frame:参考帧 cur_frame:当前帧
   size_t img_align_n_tracked = img_align.run(last_frame_, new_frame_);
   SVO_STOP_TIMER("sparse_img_align");
   SVO_LOG(img_align_n_tracked);
   SVO_DEBUG_STREAM("Img Align:\t Tracked = " << img_align_n_tracked);
+  std::cout<<"Image Align: Tracked = "<<img_align_n_tracked<<std::endl;
 
   /***********************重新寻找最优匹配点位置**********************/
   // map reprojection & feature alignment
@@ -231,6 +246,7 @@ FrameHandlerBase::UpdateResult FrameHandlerMono::processFrame()
   const size_t repr_n_mps = reprojector_.n_trials_;
   SVO_LOG2(repr_n_mps, repr_n_new_references);
   SVO_DEBUG_STREAM("Reprojection:\t nPoints = "<<repr_n_mps<<"\t \t nMatches = "<<repr_n_new_references);
+  std::cout<<"Reprojection:"<<repr_n_mps<<"Matches = "<<repr_n_new_references<<std::endl;
   // 重新投影得到的匹配点不够的话就不能继续后面的优化了
   if(repr_n_new_references < Config::qualityMinFts())
   {
@@ -264,11 +280,11 @@ FrameHandlerBase::UpdateResult FrameHandlerMono::processFrame()
   // select keyframe
   core_kfs_.insert(new_frame_);
   setTrackingQuality(sfba_n_edges_final);
-  if(tracking_quality_ == TRACKING_INSUFFICIENT)
-  {
-    new_frame_->T_f_w_ = last_frame_->T_f_w_; // reset to avoid crazy pose jumps
-    return RESULT_FAILURE;
-  }
+  // if(tracking_quality_ == TRACKING_INSUFFICIENT)
+  // {
+  //   new_frame_->T_f_w_ = last_frame_->T_f_w_; // reset to avoid crazy pose jumps
+  //   return RESULT_FAILURE;
+  // }
   double depth_mean, depth_min;
   frame_utils::getSceneDepth(*new_frame_, depth_mean, depth_min);
   if(!needNewKf(depth_mean) || tracking_quality_ == TRACKING_BAD)
@@ -277,6 +293,7 @@ FrameHandlerBase::UpdateResult FrameHandlerMono::processFrame()
     return RESULT_NO_KEYFRAME;
   }
   new_frame_->setKeyframe();
+  std::cout<<"New keyframe selected."<<std::endl;
   SVO_DEBUG_STREAM("New keyframe selected.");
 
   // new keyframe selected
